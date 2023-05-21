@@ -8,23 +8,29 @@ function [error ] = alternating_optimization(A,U,V,num_it)
         % step 1 fissiamo U
         [Qu, Ru] = efficient_qr(U);
         Bu = (Qu.')*A;
+        V_tra = V.';
 
         for i = 1:n
-            V(:,i) = solve_LLS(Ru,Bu(:,i));
-
+            V_tra(:,i) = solve_LLS(Ru,Bu(:,i)); % V dev'essere V.'
         end
-        asso = V;
 
+        V = V_tra.';
+      
         % step 2 fissiamo V
         [Qv, Rv] = efficient_qr(V);
         Bv = A * Qv;
-        Bv = Bv.'; U = U.';
+
+        U_tra = U.';  
+        Bv_tra = Bv.';  
 
         for j = 1:m
-            U(:,i) = solve_LLS(Rv, Bv(:,i));
+            U_tra(:,j) = solve_LLS(Rv, Bv_tra(:,j));
         end
+
+        U = U_tra.';
 
         error = norm(A - U*(V.'),'fro');
         k = k + 1 ;
+    
     end
 
