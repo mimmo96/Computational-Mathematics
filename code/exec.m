@@ -1,24 +1,23 @@
-m = 100;
-n = 70;
-k = 50;
-
-num_it = 30;
+m = 10;
+n = 8;
+rank_k = 7;
 
 A = rand(m,n);
-U = rand(m,k);
-V = rand(n,k);
-
+num_it = 10;
 [u,s,v] = svd(A);
 
-fprintf('rank \t\t\t error_altern \t\t error_svd \n')
+fprintf('rank \t\t\t altern_err \t\t svd_err \n')
 
-for i=1:num_it
+for k=1:rank_k
     
-    altern = alternating_optimization(A,U,V,i);
-    Ak = u(:,1:i)*s(1:i,1:i)*v(:,1:i)'; 
+    U = rand(m,k);
+    V = rand(n,k);
+
+    altern = alternating_optimization(A,U,V,num_it);
+    Ak = u(:,1:k)*s(1:k,1:k)*v(:,1:k)'; 
    
     svd_err= norm(A-Ak, 'fro');
 
-    fprintf('%f \t\t %f \t\t %f \n', i,  altern, svd_err)
+    fprintf('%f \t\t %f \t\t %f \n', k,  altern, svd_err)
 
 end
