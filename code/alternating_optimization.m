@@ -9,7 +9,8 @@ function [error , gap,  k , timer] = alternating_optimization(A,U,V,tol,num_it)
     tic;
     [~, col_u] = size(U);
     [~, col_v] = size(V);
-    while k < num_it
+
+    while (gap > tol && k < num_it)
 
         % step 1 fissiamo U
         [Qu, Ru] = efficient_qr(U);
