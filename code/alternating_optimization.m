@@ -13,7 +13,7 @@ function [error , gap,  k , timer] = alternating_optimization(A,U,V,tol,num_it)
     while (gap > tol && k < num_it)
 
         % step 1 fissiamo U
-        [Qu, Ru] = efficient_qr(U);
+        [Qu, Ru] = thin_qr(U);
         %calcolare in modo corretto Bu_o
         Quo_T = Qu.';
         Quo_T = Quo_T(1:col_u, :);
@@ -31,7 +31,7 @@ function [error , gap,  k , timer] = alternating_optimization(A,U,V,tol,num_it)
         V = V_tra.';
       
         % step 2 fissiamo V
-        [Qv, Rv] = efficient_qr(V);
+        [Qv, Rv] = thin_qr(V);
        
         %Bv = A * Qv;
         Qvo_T = Qv.';

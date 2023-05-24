@@ -14,13 +14,17 @@ function [Q, R] = thin_qr(A)
     
     R = R(1:up_to , 1:up_to);
     
-    % Costruzione della matrice Q utilizzando i vettori u salvati in U
+    % Creo la matrice Q identità
     Q = eye(m,n);
     
     for k = up_to:-1:1
         %recupero il vettore u
         u = cell2mat(U(k));
-        Q(k:end, k:end) = Q(k:end, k:end) - 2 * u * (u'* Q(k:end, k:end));
+        
+        %identity matrix of dim k:end
+        id_matrix = Q(k:end, k:end);
+
+        Q(k:end, k:end) = id_matrix - 2 * u * (u'* id_matrix);
     end
 
 end
