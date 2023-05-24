@@ -5,7 +5,7 @@ function create_matrix(m,n)
    
     %number of matrix to create
     num = 10;
-    dir = ('Matrices');
+    dir = ('Matrix');
     if (~exist(dir, 'dir')) 
         mkdir(dir); 
     end
