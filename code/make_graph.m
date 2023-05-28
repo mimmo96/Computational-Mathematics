@@ -1,4 +1,12 @@
 function make_graph(gaps, errors_norm, num_it, name_fig )
+    
+    dir = ('Figure');
+    if (~exist(dir, 'dir')) 
+        mkdir(dir); 
+    end
+    
+    cd 'Figure';
+
     fig1 = figure();
     matrix_dim = 100;
     rank = 5;
@@ -14,4 +22,6 @@ function make_graph(gaps, errors_norm, num_it, name_fig )
     
     legend('errors','gaps')
     saveas(fig1, name_fig);
+
+    cd ..
 end
