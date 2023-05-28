@@ -1,4 +1,4 @@
-function table = calculate_stats(num_rows, num_col, actual_rank, errors_norm, min_error, min_iteration, timer)
+function table = calculate_stats(A, num_rows, num_col, actual_rank, errors_norm, min_error, min_iteration, timer)
 hyperparameters;    
 %compare our results with others low rank apprx fuctions
     tic;
@@ -20,10 +20,26 @@ hyperparameters;
 
     %MAKE GRAFH:
     %GAPS, ERRORS_NORM in log scale
-    %makegraph(gaps, num_it);
-    %makegraph(errors_norm, num_it)
+    %makegraph(gaps, errors_norm, num_it, name);
 
     %SAVE IN A TABLE:
-    % num_rows, num_col, actual_rank, NUM_IT, MIN_IT, MIN_ERROR, ERROR_SVD, TIMER_AlOp, TIMER_SVD
+    saveValuesToFile(num_rows, num_col, actual_rank, length(errors_norm), min_iteration, min_error, svd_err, timer, timer_svd, 'log_stats.txt')
     
+end
+
+function saveValuesToFile(num_rows, num_cols, actual_rank, NUM_IT, MIN_IT, MIN_ERROR, ERROR_SVD, TIMER_AlOp, TIMER_SVD, file_name)
     
+    % Creazione della riga di valori da salvare
+    values = [num_rows, num_cols, actual_rank, NUM_IT, MIN_IT, MIN_ERROR, ERROR_SVD, TIMER_AlOp, TIMER_SVD];
+    values_str = sprintf('%d\t', values);
+    values_str = values_str(1:end-1); % Rimuove l'ultimo carattere di tabulazione
+    
+    % Apertura del file in modalità append
+    fid = fopen(file_name, 'a');
+    
+    % Scrittura dei valori sul file
+    fprintf(fid, '%s\n', values_str);
+    
+    % Chiusura del file
+    fclose(fid);
+end
