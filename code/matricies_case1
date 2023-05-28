@@ -1,5 +1,5 @@
 hyperparameters;
-%caso m >> n: num_matrici < 50
+%caso m >> n: num_matrici <= 50*4
 for idx_mag = 1:length(magnitude)
     for num_cols = n:step_col:max_col
         for num_rows = m:step_rows:max_rows
@@ -10,7 +10,11 @@ for idx_mag = 1:length(magnitude)
                 U = rand(num_rows,k);
                 V = rand(num_cols,k);
                 %alternating_optimization
-                alternating_optimization(A,U,V,error, num_iterations)
+                %[errors_norm, min_error, min_iteration, timer] = alternating_optimization(A,U,V, num_iterations);
+                %if you want gaps btw two consecutive errors, calculate its
+                %here or in makegraphs or in an appropriete function named:
+                % save_results
+                %calculate_stats(errors_norm, min_error, min_iteration, timer)
             end
         end
     end
