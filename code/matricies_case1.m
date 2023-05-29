@@ -4,6 +4,7 @@ addpath utils;
 
 hyperparameters;
 create_file_for_log;
+id = 0;
 
 %caso m >> n: num_matrici <= 50*4
 for idx_mag = 1:length(magnitude)
@@ -24,7 +25,8 @@ for idx_mag = 1:length(magnitude)
                 %here or in makegraphs or in an appropriete function named:
                 % save_results
                 
-                calculate_stats(A, num_rows, num_cols, k, errors_norm, min_error, min_iteration, timer)
+                calculate_stats(A, num_rows, num_cols, k, errors_norm, min_error, min_iteration, timer, id)
+                id = id + 1;
             end
         end
     end

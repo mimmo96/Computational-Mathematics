@@ -8,7 +8,7 @@ function create_file_for_log()
     end
 
     % Creazione della riga di valori da salvare
-    values_str = sprintf('id\tnum_rows\tnum_cols\tactual_rank\tNUM_IT\tMIN_IT\tMIN_ERROR\tERROR_SVD\tTIMER_AlOp\tTIMER_SVD');
+    values_str = sprintf('id\t\tnum_rows\tnum_cols\tactual_rank\tNUM_IT\t\tMIN_IT\t\tMIN_ERROR\t\tERROR_SVD\t\tTIMER_AlOp\t\tTIMER_SVD');
 
     % creo un nuovo file
     fid = fopen('results/log_stats.txt', 'w');
