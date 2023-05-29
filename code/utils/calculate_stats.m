@@ -20,7 +20,7 @@ function calculate_stats(A, num_rows, num_col, actual_rank, errors_norm, min_err
     
 
     %MAKE GRAFH:
-    make_graph(gaps, errors_norm, length(errors_norm), 'matrix_'+string(id)+'.png');
+    make_graph(gaps, errors_norm, length(errors_norm), 'results/matrix_'+string(id)+'.png');
 
     %SAVE IN A TABLE:
     saveValuesToFile(id, num_rows, num_col, actual_rank, length(errors_norm), min_iteration, min_error, svd_err, timer, timer_svd, 'results/log_stats.txt')

@@ -1,13 +1,8 @@
 function make_graph(gaps, errors_norm, it, name_fig )
-    dir = ('../figures');
-    
-    if (~exist(dir, 'dir')) 
-        mkdir(dir); 
-    end
-
+  
     num_it = linspace(1,it,it);
 
-    fig1 = figure('Visible', 'off');;
+    fig1 = figure('Visible', 'off');
     
     semilogy(num_it,errors_norm);
     grid on;
@@ -20,6 +15,6 @@ function make_graph(gaps, errors_norm, it, name_fig )
     %title('Matrix:' + string(matrix_dim) + ' rank:' + string(rank));
     
     legend('errors','gaps');
-    saveas(fig1, '../figures/'+name_fig);
+    saveas(fig1, string(name_fig));
 
 end
