@@ -6,7 +6,7 @@ hyperparameters;
 create_file_for_log;
 id = 0;
 
-%caso m == n: num_matrici <= 50*4
+%caso m == n
 for idx_mag = 1:length(magnitude)
     for num_cols = n:step_col:max_col
 
