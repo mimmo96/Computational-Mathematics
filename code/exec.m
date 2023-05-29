@@ -1,10 +1,10 @@
-m = 10;
-n = 7;
+m = 1000;
+n = 1000;
 rank_k = 3;
 
-A = rand(m,n)*1e-12;
-tol = 0.001;
-num_it = 100;
+A = rand(m,n);
+tol = 1e-12;
+num_it = 1;
 [u,s,v] = svd(A);
 
 fprintf('rank \t\t altern_err \t\t svd_err \n')
