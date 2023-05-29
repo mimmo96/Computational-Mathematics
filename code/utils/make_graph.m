@@ -2,19 +2,26 @@ function make_graph(gaps, errors_norm, it, name_fig )
   
     num_it = linspace(1,it,it);
 
-    fig1 = figure('Visible', 'off');
+    fig = figure('Visible', 'off');
     
+    subplot(2,1,1);
+
     semilogy(num_it,errors_norm);
-    grid on;
-    hold on;
-    semilogy(num_it,gaps,':');
-    hold off;
-  
     xlabel('iteration');
-    ylabel('error & gap');
-    %title('Matrix:' + string(matrix_dim) + ' rank:' + string(rank));
+    ylabel('errors');
+    grid on;
+  
+
+    % Secondo subplot
+    subplot(2,1,2);
+
+    semilogy(num_it,gaps);
+    xlabel('iteration');
+    ylabel('gap');
+    grid on;
     
-    legend('errors','gaps');
-    saveas(fig1, string(name_fig));
+
+    % Salvataggio della figura con entrambi i subplot
+    print(fig, name_fig, '-dpng', '-r200');
 
 end
