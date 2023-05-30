@@ -1,33 +1,59 @@
+% FUNCTION FOR COMPUTE THIN QR
+%
+% Author:   Domenico Profumo 
+%           Gerlando Gramaglia
+%
+% INPUT
+%           A:
+
 function [Q, R] = thin_qr(A)
 
     [m, n] = size(A);
     
+    % create R = A and set iteration to min(n,m)
     R = A;
     up_to = min(m, n);
     
     for j = 1:up_to
+
         [u, s] = householder_vector(R(j:end, j));
         R(j:end, j:end) = R(j:end, j:end) - 2*u*(u'*R(j:end, j:end));
-        % Salva il vettore u
+        
+        % Store il vettore u
         U{j} = u;
     end
     
+    %trasform R leaving only min(n,m) columns and rows
     R = R(1:up_to , 1:up_to);
     
-    % Creo la matrice Q identità
+    % create the matrix Q identity
     Q = eye(m,n);
     
     for k = up_to:-1:1
-        %recupero il vettore u
+        %retrieve the vector u at position k
         u = cell2mat(U(k));
         
         %identity matrix of dim k:end
         id_matrix = Q(k:end, k:end);
-
+        
+        %compute new Q
         Q(k:end, k:end) = id_matrix - 2 * u * (u'* id_matrix);
     end
 
 end
+
+
+% FUNCTION FOR COMPUTE HOUSEHOLDER VECTOR
+%
+% Author:   Domenico Profumo 
+%           Gerlando Gramaglia
+%
+% INPUT
+%           x:
+%
+% OUTPUT
+%           u:
+%           s:
 
 function [u, s] = householder_vector(x)
 

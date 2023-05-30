@@ -3,7 +3,17 @@
 % Author:   Domenico Profumo 
 %           Gerlando Gramaglia
 %
-% INPUT:    A, num_rows, num_col, actual_rank, errors_norm, min_error, min_iteration, gaps, timer, id
+% INPUT:    
+%           A:
+%           num_rows:
+%           num_col:
+%           actual_rank:
+%           errors_norm:
+%           min_error:
+%           min_iteration:
+%           gaps:
+%           timer:
+%           id_
 % OUTPUT:   --
 
 

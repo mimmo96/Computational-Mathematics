@@ -3,8 +3,19 @@
 % Author:   Domenico Profumo 
 %           Gerlando Gramaglia
 %
-% INPUT:    A,U,V,tol,num_it
-% OUTPUT:   errors_norm, min_error, min_iteration, gaps, timer
+% INPUT:    
+%           A:
+%           U:
+%           V:
+%           tol:
+%           num_it:
+%
+% OUTPUT:   
+%           errors_norm: 
+%           min_error:
+%           min_iteration:
+%           gaps:
+%           timer:
 
 function [errors_norm, min_error, min_iteration, gaps, timer] = alternating_optimization(A,U,V,tol,num_it)
 
