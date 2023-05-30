@@ -9,7 +9,7 @@ max_col = 50;
 max_rows = 10000;
 
 %magnitude of values
-magnitude = [1, 1e-14, 1e14];
+magnitude = [1, 1e-10, 1e10];
 
 %matrici sparse
 density = [0.25, 0.5, 0.75];
@@ -17,6 +17,9 @@ density = [0.25, 0.5, 0.75];
 %hyperparameters
 num_iterations = 1000;
 error = 1e-16;
+
+%gap tollerance
+tol = 1e-15;
 
 %rank 
 rank = [0.25, 0.5, 0.75, 1];

@@ -1,15 +1,19 @@
-function [errors_norm, min_error, min_iteration, timer] = alternating_optimization(A,U,V,num_it)
+function [errors_norm, min_error, min_iteration, gap, timer] = alternating_optimization(A,U,V,tol,num_it)
 
     w = 1 ;
     [m , n] = size(A);
     errors_norm = Inf(1, num_it);
     %the min error is not the last error in errors_norm
     min_error = Inf;
+    
+    %gap
+    previus_error = 0;
     min_iteration = 0;
+    gap = Inf;
     
     tic;
 
-    while (w <= num_it)
+    while (gap>tol  && w <= num_it)
 
         % step 1 fissiamo U
         [Qu, Ru] = thin_qr(U);
@@ -47,12 +51,18 @@ function [errors_norm, min_error, min_iteration, timer] = alternating_optimizati
             min_error = errors_norm(w);
             min_iteration = w;
         end 
+
+        gap = abs(previus_error - errors_norm(w));
+
+        previus_error = errors_norm(w);
         w = w + 1 ;
     end
     
     timer = toc;   
 end
 
+
+%function for compute LLS
 function [x, error] = solve_LLS(A,b)
     x = A\b;
     error = norm(A*x - b);

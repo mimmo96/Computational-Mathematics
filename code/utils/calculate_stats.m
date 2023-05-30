@@ -12,15 +12,17 @@ function calculate_stats(A, num_rows, num_col, actual_rank, errors_norm, min_err
 
     
     %gaps = difference btw two consecutive errors in our algo
-    gaps = zeros(length(errors_norm));
+    gaps = Inf(1, length(errors_norm));
     for i = 1:length(errors_norm)-1
         %come va calcolato meglio??
         gaps(i) = abs(errors_norm(i) - errors_norm(i+1));
     end
-    
+
+    [dim_row, dim_col] = size(A);
+    fig_title = 'Matrix:'+string(dim_row)+'x'+string(dim_col)+' rank:'+ string(actual_rank)+' size of values:'+ sprintf('%e', A(1,1));
 
     %MAKE GRAFH:
-    make_graph(gaps, errors_norm, length(errors_norm), 'results/matrix_'+string(id)+'.png');
+    make_graph(gaps, errors_norm, length(errors_norm), 'results/matrix_'+string(id)+'.png', fig_title);
 
     %SAVE IN A TABLE:
     saveValuesToFile(id, num_rows, num_col, actual_rank, length(errors_norm), min_iteration, min_error, svd_err, timer, timer_svd, 'results/log_stats.txt')

@@ -1,4 +1,4 @@
-function make_graph(gaps, errors_norm, it, name_fig )
+function make_graph(gaps, errors_norm, it, name_fig, fig_title )
   
     num_it = linspace(1,it,it);
 
@@ -9,6 +9,7 @@ function make_graph(gaps, errors_norm, it, name_fig )
     semilogy(num_it,errors_norm);
     xlabel('iteration');
     ylabel('errors');
+    title(fig_title);
     grid on;
   
 

@@ -1,6 +1,7 @@
 clear;
 
 addpath utils;
+format long e;
 
 hyperparameters;
 create_file_for_log;
@@ -20,7 +21,7 @@ for idx_mag = 1:length(magnitude)
                 V = rand(num_cols,k);
 
                 %alternating_optimization
-                [errors_norm, min_error, min_iteration, timer] = alternating_optimization(A,U,V, num_iterations);
+                [errors_norm, min_error, min_iteration, gap, timer] = alternating_optimization(A,U,V, tol, num_iterations);
                 %if you want gaps btw two consecutive errors, calculate its
                 %here or in makegraphs or in an appropriete function named:
                 % save_results
