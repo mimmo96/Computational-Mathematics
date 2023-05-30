@@ -51,3 +51,9 @@ function [errors_norm, min_error, min_iteration, timer] = alternating_optimizati
     end
     
     timer = toc;   
+end
+
+function [x, error] = solve_LLS(A,b)
+    x = A\b;
+    error = norm(A*x - b);
+end

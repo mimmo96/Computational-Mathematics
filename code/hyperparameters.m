@@ -15,7 +15,7 @@ magnitude = [1, 1e-14, 1e14];
 density = [0.25, 0.5, 0.75];
 
 %hyperparameters
-num_iterations = 10.000;
+num_iterations = 1000;
 error = 1e-16;
 
 %rank 
