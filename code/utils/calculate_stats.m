@@ -6,7 +6,7 @@ function calculate_stats(A, num_rows, num_col, actual_rank, errors_norm, min_err
 
     [u,s,v] = svd(A, 'econ');
     Ak = u(:,1:actual_rank)*s(1:actual_rank,1:actual_rank)*v(:,1:actual_rank)'; 
-    svd_err= norm(A-Ak, 'fro');
+    svd_err= norm(A - Ak,'fro') / norm(A, 'fro');
     
     timer_svd = toc;
 
