@@ -67,7 +67,7 @@ function [errors_norm, min_error, min_iteration, gaps, timer] = alternating_opti
         %save the new U
         U = U_tra.';
 
-        %compute error and gap 
+        %calculate error and gap and save it into 
         errors_norm(w) =  norm(A - U*(V.'),'fro') / norm(A, 'fro');
         if (errors_norm(w) < min_error)
             min_error = errors_norm(w);
@@ -80,12 +80,12 @@ function [errors_norm, min_error, min_iteration, gaps, timer] = alternating_opti
         w = w + 1 ;
     end
 
-    %save execution time
     timer = toc;   
 end
 
 
 %function for compute LLS
-function [x] = solve_LLS(A,b)
+function [x, error] = solve_LLS(A,b)
     x = A\b;
+    error = norm(A*x - b);
 end

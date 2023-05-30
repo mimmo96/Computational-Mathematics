@@ -1,7 +1,14 @@
+%file containing all hyperparameters
+%
+% Author: Domenico Profumo 
+%         Gerlando Gramaglia
+
+
 %dimensioni matrici
 m = 100;  
 n = 10; 
 
+%
 step_col = 10;
 step_rows = 1000;
 
@@ -12,7 +19,7 @@ max_rows = 10000;
 magnitude = [1, 1e-10, 1e10];
 
 %matrici sparse
-density = [0.25, 0.5, 0.75];
+%density = [0.25, 0.5, 0.75];
 
 %hyperparameters
 num_iterations = 1000;

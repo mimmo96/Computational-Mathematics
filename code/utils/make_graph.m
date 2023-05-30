@@ -4,6 +4,7 @@ function make_graph(gaps, errors_norm, name_fig, fig_title )
 
     fig = figure('Visible', 'off');
     
+    % First subplot
     subplot(2,1,1);
 
     semilogy(num_it,errors_norm);
@@ -13,7 +14,7 @@ function make_graph(gaps, errors_norm, name_fig, fig_title )
     grid on;
   
 
-    % Secondo subplot
+    % Second subplot
     subplot(2,1,2);
 
     semilogy(num_it,gaps);
