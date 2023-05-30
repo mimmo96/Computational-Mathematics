@@ -19,12 +19,12 @@ for idx_mag = 1:length(magnitude)
             V = rand(num_cols,k);
 
             %alternating_optimization
-            [errors_norm, min_error, min_iteration, gap, timer] = alternating_optimization(A,U,V, tol, num_iterations);
+            [errors_norm, min_error, min_iteration, gaps, timer] = alternating_optimization(A,U,V, tol, num_iterations);
             %if you want gaps btw two consecutive errors, calculate its
             %here or in makegraphs or in an appropriete function named:
             % save_results
             
-            calculate_stats(A, num_cols, num_cols, k, errors_norm, min_error, min_iteration, timer, id)
+            calculate_stats(A, num_cols, num_cols, k, errors_norm, min_error, min_iteration, gaps, timer, id)
             id = id + 1;
         end
        

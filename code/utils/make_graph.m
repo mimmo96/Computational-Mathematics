@@ -1,6 +1,6 @@
-function make_graph(gaps, errors_norm, it, name_fig, fig_title )
+function make_graph(gaps, errors_norm, name_fig, fig_title )
   
-    num_it = linspace(1,it,it);
+    num_it = linspace(1,length(errors_norm),length(errors_norm));
 
     fig = figure('Visible', 'off');
     

@@ -1,4 +1,4 @@
-function [errors_norm, min_error, min_iteration, gap, timer] = alternating_optimization(A,U,V,tol,num_it)
+function [errors_norm, min_error, min_iteration, gaps, timer] = alternating_optimization(A,U,V,tol,num_it)
 
     w = 1 ;
     [m , n] = size(A);
@@ -9,12 +9,12 @@ function [errors_norm, min_error, min_iteration, gap, timer] = alternating_optim
     %gap
     previus_error = 0;
     min_iteration = 0;
+    gaps = Inf(1, num_it);
     gap = Inf;
     
     tic;
 
-    while (gap>tol  && w <= num_it)
-
+    while (w <= num_it &&  gap>tol) 
         % step 1 fissiamo U
         [Qu, Ru] = thin_qr(U);
         %calcolare in modo corretto Bu_o
@@ -44,8 +44,7 @@ function [errors_norm, min_error, min_iteration, gap, timer] = alternating_optim
         end
 
         U = U_tra.';
-        %maybe it's better to calculate the error with 
-        % ||A - UV^T || / ||A|| ??????
+
         errors_norm(w) =  norm(A - U*(V.'),'fro') / norm(A, 'fro');
         if (errors_norm(w) < min_error)
             min_error = errors_norm(w);
@@ -53,11 +52,11 @@ function [errors_norm, min_error, min_iteration, gap, timer] = alternating_optim
         end 
 
         gap = abs(previus_error - errors_norm(w));
-
+        gaps(w) = gap;
         previus_error = errors_norm(w);
         w = w + 1 ;
     end
-    
+
     timer = toc;   
 end
 
