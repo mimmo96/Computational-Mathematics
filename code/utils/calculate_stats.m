@@ -19,7 +19,7 @@ function calculate_stats(A, num_rows, num_col, actual_rank, errors_norm, min_err
     end
 
     [dim_row, dim_col] = size(A);
-    fig_title = 'Matrix:'+string(dim_row)+'x'+string(dim_col)+' rank:'+ string(actual_rank)+' size of values:'+ sprintf('%e', A(1,1));
+    fig_title = 'Matrix:'+string(dim_row)+'x'+string(dim_col)+' rank:'+ string(actual_rank);
 
     %MAKE GRAFH:
     make_graph(gaps, errors_norm, length(errors_norm), 'results/matrix_'+string(id)+'.png', fig_title);
