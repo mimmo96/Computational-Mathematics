@@ -51,7 +51,7 @@ function [errors_norm, min_error, min_iteration, gaps, timer] = alternating_opti
         %solve each LLS and save result on V^T columns
         Ru_o = Ru;
         for i = 1:n
-            V_tra(:,i) = solve_LLS(Ru_o,Bu_o(:,i)); % V dev'essere V.'
+            V_tra(:,i) = solve_LLS(Ru_o,Bu_o(:,i)); 
         end
 
         %save the new V
