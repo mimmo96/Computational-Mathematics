@@ -35,7 +35,10 @@ function make_graph(gaps, errors_norm, name_fig, fig_title )
     xlabel('iteration');
     ylabel('gap');
     grid on;
-    
+
+    % Manually set the y-axis limits
+    gap_ylim = [min(gaps), max(gaps)];
+    ylim(gap_ylim);
 
     % Saving the figure with both subplots
     print(fig, name_fig, '-dpng', '-r200');
