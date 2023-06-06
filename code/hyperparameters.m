@@ -26,4 +26,4 @@ num_iterations = 1000;
 tol = 1e-04;
 
 %rank 
-rank = [0.25, 0.5, 0.75, 1];
+rank = [0.25, 0.5, 0.75];
