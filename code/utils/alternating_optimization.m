@@ -17,7 +17,7 @@
 %           gaps:
 %           timer:
 
-function [errors_norm, min_error, min_iteration, gaps, timer] = alternating_optimization(A,U,V,tol,num_it)
+function [opt_error, errors_norm, min_error, min_iteration, gaps, timer] = alternating_optimization(A,U,V, sigma, tol,num_it)
 
     w = 1 ;
     [m , n] = size(A);
@@ -25,7 +25,6 @@ function [errors_norm, min_error, min_iteration, gaps, timer] = alternating_opti
     %variable used for store errors
     errors_norm = Inf(1, num_it);
     min_error = Inf;
-    previus_error = 0;
     min_iteration = 0;
 
     %variable used for store gaps
@@ -36,6 +35,19 @@ function [errors_norm, min_error, min_iteration, gaps, timer] = alternating_opti
     tic;
 
     while (w <= num_it &&  gap>tol) 
+
+        % compute rank of UV^T
+        rank_u = rank(U);
+        rank_v = rank(V);
+        rank_uv = min( rank_u , rank_v);
+
+        % find optimal values
+        
+        sigma_from_rank_uv = sigma(rank_uv+1:end);
+
+        % Calcola la radice quadrata della somma al quadrato degli elementi selezionati
+        opt_error = sqrt(sum(sigma_from_rank_uv.^2));
+
         % --------------------
         % step 1 with fixed U
         % --------------------
@@ -79,15 +91,14 @@ function [errors_norm, min_error, min_iteration, gaps, timer] = alternating_opti
         U = U_tra.';
 
         %compute error and gap 
-        errors_norm(w) =  norm(A - U*(V.'),'fro') / norm(A, 'fro');
+        errors_norm(w) =  norm(A - U*(V.'),'fro');
         if (errors_norm(w) < min_error)
             min_error = errors_norm(w);
             min_iteration = w;
         end 
 
-        gap = abs(previus_error - errors_norm(w));
+        gap = abs(( errors_norm(w) - opt_error ) / opt_error) ;
         gaps(w) = gap;
-        previus_error = errors_norm(w);
         w = w + 1 ;
     end
 

@@ -14,7 +14,7 @@ function create_file_for_log()
     end
 
     % Creating the row of values to be saved
-    values_str = sprintf('id\t\tnum_rows\tnum_cols\tactual_rank\tNUM_IT\t\tMIN_IT\t\tMIN_ERROR\t\tERROR_SVD\t\tTIMER_AlOp\t\tTIMER_SVD');
+    values_str = sprintf('id\t\trows\t\tcols\trank\tit\t\tmin_it\tmin_dist\t\t\tsvd_dist\t\t\topt_distance\t\t\ttimer_opt\t\t\ttimer_svd');
 
     % Create a new file
     fid = fopen('results/log_stats.txt', 'w');

@@ -23,7 +23,7 @@ num_iterations = 1000;
 %error = 1e-16;
 
 %gap tollerance
-tol = 1e-04;
+tol = 1e-14;
 
 %rank 
 rank = [0.25, 0.5, 0.75];
