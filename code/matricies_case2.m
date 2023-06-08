@@ -44,7 +44,7 @@ for idx_mag = 1:length(magnitude)
             [opt_error, errors_norm, min_error, min_iteration, gaps, timer] = alternating_optimization(A,U,V, sigma, tol, num_iterations);
                 
             %save statistics of execution
-            calculate_stats(A, u_svd, S, v_svd , num_rows, num_cols, k, opt_error, errors_norm, min_error, min_iteration, gaps, timer, id)
+            calculate_stats(A, u_svd, S, v_svd , num_rows, num_rows, k, opt_error, errors_norm, min_error, min_iteration, gaps, timer, id)
             id = id + 1;
         end
        
