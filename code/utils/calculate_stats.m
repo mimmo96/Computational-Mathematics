@@ -25,7 +25,7 @@ function calculate_stats(A, u_svd, S, v_svd, num_rows, num_col, actual_rank, opt
     tic;
 
     Ak = u_svd(:,1:actual_rank)*S(1:actual_rank,1:actual_rank)*v_svd(:,1:actual_rank)'; 
-    svd_err= norm(A - Ak,'fro') ;
+    svd_err = norm(A - Ak,'fro') ;
     %svd_distance = abs( svd_err - opt_error ) / opt_error;
 
     %save time for svd
@@ -45,8 +45,10 @@ end
 function saveValuesToFile(id, num_rows, num_cols, actual_rank, NUM_IT, MIN_IT, MIN_ERROR, ERROR_SVD, opt_error, TIMER_AlOp, TIMER_SVD, file_name)
     
     %  Creating the row of values to be saved
-    values = [id, num_rows, num_cols, actual_rank, NUM_IT, MIN_IT, MIN_ERROR, ERROR_SVD, opt_error, TIMER_AlOp, TIMER_SVD];
-    values_str = sprintf('%d \t\t', values);
+    values = [id, num_rows, num_cols, actual_rank, NUM_IT, MIN_ERROR, ERROR_SVD, opt_error, TIMER_AlOp, TIMER_SVD];
+    values_str = sprintf('%-8d \t%-8d \t%-8d \t%-8d \t%-8d \t%-8.6e \t\t%-8.6e \t\t%-8.6e \t\t%-8.6e \t\t%-8.6e', values);
+    fprintf('%s\n', values_str);
+    
     values_str = values_str(1:end-1); 
     
     % Opening the file in append mode

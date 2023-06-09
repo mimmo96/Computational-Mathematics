@@ -23,7 +23,8 @@ function make_graph(gaps, errors_norm, name_fig, fig_title )
     % Plot for gaps
     semilogy(num_it,gaps);
     xlabel('iteration');
-    ylabel('gap');
+    ylabel('(f_i-f_*)/f_*');
+    title(fig_title)
     grid on;
 
     % Saving the figure with both subplots

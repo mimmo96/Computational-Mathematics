@@ -45,7 +45,7 @@ function [opt_error, errors_norm, min_error, min_iteration, gaps, timer] = alter
         
         sigma_from_rank_uv = sigma(rank_uv+1:end);
 
-        % Calcola la radice quadrata della somma al quadrato degli elementi selezionati
+        % Compute the square root of the sum squared of the sigma elements
         opt_error = sqrt(sum(sigma_from_rank_uv.^2));
 
         % --------------------
