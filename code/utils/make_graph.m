@@ -22,8 +22,8 @@ function make_graph(gaps, errors_norm, name_fig, fig_title )
 
     % Plot for gaps
     semilogy(num_it,gaps);
-    xlabel('iteration');
-    ylabel('(f_i-f_*)/f_*');
+    xlabel('iteration (i)');
+    ylabel('(error_i-error_*)/error_*');
     title(fig_title)
     grid on;
 

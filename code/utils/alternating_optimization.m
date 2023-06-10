@@ -102,12 +102,13 @@ function [opt_error, errors_norm, min_error, min_iteration, gaps, timer] = alter
         w = w + 1 ;
     end
 
+    %save execution time
+    timer = toc;   
+
     %resize to correct dimension
     errors_norm = errors_norm(1:w-1);
     gaps = gaps(1:w-1);
 
-    %save execution time
-    timer = toc;   
 end
 
 

@@ -22,9 +22,13 @@ for idx_mag = 1:length(magnitude)
             A = rand(num_rows, num_cols)*magnitude(idx_mag);
             rank_max = min(num_rows,num_cols);
             
+            tic;
             % Compute SVD of A
             [u_svd, S, v_svd] = svd(A);
-
+            
+            %save time for svd
+            timer_svd = toc;
+            
             % Save all sigma values
             [~ , size_sigma_matrix] = size(S);
             
@@ -44,7 +48,7 @@ for idx_mag = 1:length(magnitude)
                 [opt_error, errors_norm, min_error, min_iteration, gaps, timer] = alternating_optimization(A,U,V, sigma, tol, num_iterations);
                 
                 %save statistics of execution
-                calculate_stats(A, u_svd, S, v_svd , num_rows, num_cols, k, opt_error, errors_norm, min_error, min_iteration, gaps, timer, id)
+                calculate_stats(A, u_svd, S, v_svd , num_rows, num_cols, k, opt_error, errors_norm, min_error, min_iteration, gaps, timer, timer_svd, id)
                 id = id + 1;
             end
         end
