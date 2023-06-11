@@ -37,11 +37,11 @@ function calculate_stats(A, u_svd, S, v_svd, num_rows, num_col, actual_rank, opt
     make_graph(gaps, errors_norm, 'results/matrix_'+string(id)+'.png', fig_title);
 
     %SAVE IN A TABLE:
-    saveValuesToFile(id, num_rows, num_col, actual_rank, length(errors_norm), min_iteration, min_error, svd_err, opt_error, timer, timer_svd_final, 'results/log_stats.txt')
+    saveValuesToFile(id, num_rows, num_col, actual_rank, length(errors_norm), min_error, svd_err, opt_error, timer, timer_svd_final, 'results/log_stats.txt')
     
 end
 
-function saveValuesToFile(id, num_rows, num_cols, actual_rank, NUM_IT, MIN_IT, MIN_ERROR, ERROR_SVD, opt_error, TIMER_AlOp, TIMER_SVD, file_name)
+function saveValuesToFile(id, num_rows, num_cols, actual_rank, NUM_IT, MIN_ERROR, ERROR_SVD, opt_error, TIMER_AlOp, TIMER_SVD, file_name)
     
     %  Creating the row of values to be saved
     values = [id, num_rows, num_cols, actual_rank, NUM_IT, MIN_ERROR, ERROR_SVD, opt_error, abs((opt_error-MIN_ERROR) / opt_error) , abs((opt_error-ERROR_SVD) / opt_error) ,TIMER_AlOp, TIMER_SVD];

@@ -36,18 +36,6 @@ function [opt_error, errors_norm, min_error, min_iteration, gaps, timer] = alter
 
     while (w <= num_it &&  gap>tol) 
 
-        % compute rank of UV^T
-        rank_u = rank(U);
-        rank_v = rank(V);
-        rank_uv = min( rank_u , rank_v);
-
-        % find optimal values
-        
-        sigma_from_rank_uv = sigma(rank_uv+1:end);
-
-        % Compute the square root of the sum squared of the sigma elements
-        opt_error = sqrt(sum(sigma_from_rank_uv.^2));
-
         % --------------------
         % step 1 with fixed U
         % --------------------
@@ -90,8 +78,20 @@ function [opt_error, errors_norm, min_error, min_iteration, gaps, timer] = alter
         %save the new U
         U = U_tra.';
 
+        %Compute U*V^T
+        UV = U*(V.');
+
+        % compute rank of UV^T
+        rank_uv = rank( UV );
+
+        % find optimal values
+        sigma_from_rank_uv = sigma(rank_uv+1:end);
+
+        % Compute the square root of the sum squared of the sigma elements
+        opt_error = sqrt(sum(sigma_from_rank_uv.^2));
+
         %compute error and gap 
-        errors_norm(w) =  norm(A - U*(V.'),'fro');
+        errors_norm(w) =  norm(A - UV,'fro');
         if (errors_norm(w) < min_error)
             min_error = errors_norm(w);
             min_iteration = w;
