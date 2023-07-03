@@ -6,9 +6,13 @@ $$\displaystyle \min_{ U\inℝ^{m,k} , V\inℝ^{n,k}} \lVert A-UV^T \rVert_F $$
 (A) is alternating optimization: first take an initial $V = V_0$, and compute
 
 $$  U_1 = arg min_{U} \lVert A-UV_0^T \rVert_{F} $$
+
 then use it to compute
+
 $$  V_1 = arg min_{V} \lVert A-U_1V^T \rVert_{F} $$
+
 then 
+
 $$  U_2 = arg min_U \lVert A-UV_1^T \rVert_{F} $$
 
 and so on, until (hopefully) convergence. Use QR factorization to solve these sub-problems. No off-the-shelf solvers allowed. In particular you must implment yourself QR factorization.
