@@ -30,7 +30,7 @@ For our experiments we use matrices A whose dimensions are :
 **case1** (n >> m) : the number of rows is much larger than the number of columns, we choose
 m ∈ [10, 50] while n ∈ [100, 10000].
 
-**case2** (m ≈ n) : the number of rows is approximately equal to the number of columns, here we choose
+**case2** (n ≈ m) : the number of rows is approximately equal to the number of columns, here we choose
 m, n ∈ [10, 1000]
 
 In particular, for the execution of case1 you can lanch the following command:
