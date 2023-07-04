@@ -1,4 +1,5 @@
-% FUNCTION CREATE FILE FOR LOG
+% FUNCTION create_file_for_log: used for create results folder and
+%                               log_stats.txt file with column information
 %
 % Author:   Domenico Profumo 
 %           Gerlando Gramaglia
@@ -15,6 +16,8 @@ function create_file_for_log()
 
     % Creating the row of values to be saved
     values_str = sprintf('id\t\trows\t\tcols\t\trank\t\tit\t\terror*\t\t\tAlOp_err\t\tsvd_error\t|(AlOp_err-error*)/error*| |(svd_err-error*)/error*| \ttimer_opt\ttimer_svd');
+
+    fprintf('%s\n', values_str);
 
     % Create a new file
     fid = fopen('results/log_stats.txt', 'w');

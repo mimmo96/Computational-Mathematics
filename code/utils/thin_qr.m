@@ -1,10 +1,13 @@
-% FUNCTION FOR COMPUTE THIN QR
+% FUNCTION thin_qr: compute thin qr factorization from scratch
 %
 % Author:   Domenico Profumo 
 %           Gerlando Gramaglia
 %
 % INPUT
-%           A:
+%           A: Matrix
+% OUTPUT
+%           u: vector 
+%           s: vector
 
 function [Q, R] = thin_qr(A)
 
@@ -19,11 +22,11 @@ function [Q, R] = thin_qr(A)
         [u, s] = householder_vector(R(j:end, j));
         R(j:end, j:end) = R(j:end, j:end) - 2*u*(u'*R(j:end, j:end));
         
-        % Store il vettore u
+        % Store vector u
         U{j} = u;
     end
     
-    %trasform R leaving only min(n,m) columns and rows
+    % trasform R leaving only min(n,m) columns and rows
     R = R(1:up_to , 1:up_to);
     
     % create the matrix Q identity
@@ -43,17 +46,17 @@ function [Q, R] = thin_qr(A)
 end
 
 
-% FUNCTION FOR COMPUTE HOUSEHOLDER VECTOR
+% FUNCTION householder_vector: compute householder_vector
 %
 % Author:   Domenico Profumo 
 %           Gerlando Gramaglia
 %
 % INPUT
-%           x:
+%           x: vector 
 %
 % OUTPUT
-%           u:
-%           s:
+%           u: vector
+%           s: vector
 
 function [u, s] = householder_vector(x)
 

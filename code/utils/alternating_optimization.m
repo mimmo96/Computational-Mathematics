@@ -4,20 +4,22 @@
 %           Gerlando Gramaglia
 %
 % INPUT:    
-%           A:
-%           U:
-%           V:
-%           tol:
-%           num_it:
+%           A: matrix with dim MxN
+%           U: matrix with dim MxK
+%           V: matrix with dim NxK
+%           sigma: array containing all sigma values of matrix A
+%           tol: values
+%           num_it: maximum number of iteration
 %
 % OUTPUT:   
-%           errors_norm: 
-%           min_error:
-%           min_iteration:
-%           gaps:
-%           timer:
+%           opt_error: optimal error
+%           errors_norm: array containing errors of each iteration
+%           min_error: value of the minimum error reached during all iterations
+%           min_iteration: number of iterations in which the minimum error is reached
+%           gaps: array containing how much the error reached at each iteration deviates from the optimal error relatively
+%           timer: time spent during the execution of the algorithm
 
-function [opt_error, errors_norm, min_error, min_iteration, gaps, timer] = alternating_optimization(A,U,V, sigma, tol,num_it)
+function [opt_error, errors_norm, min_error, gaps, timer] = alternating_optimization(A,U,V, sigma, tol,num_it)
 
     w = 1 ;
     [m , n] = size(A);
@@ -25,7 +27,6 @@ function [opt_error, errors_norm, min_error, min_iteration, gaps, timer] = alter
     %variable used for store errors
     errors_norm = Inf(1, num_it);
     min_error = Inf;
-    min_iteration = 0;
 
     %variable used for store gaps
     gaps = Inf(1, num_it);
@@ -94,7 +95,6 @@ function [opt_error, errors_norm, min_error, min_iteration, gaps, timer] = alter
         errors_norm(w) =  norm(A - UV,'fro');
         if (errors_norm(w) < min_error)
             min_error = errors_norm(w);
-            min_iteration = w;
         end 
 
         gap = abs(( errors_norm(w) - opt_error ) / opt_error) ;

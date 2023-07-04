@@ -1,29 +1,34 @@
-%file containing all hyperparameters
+% file containing configuration and all hyperparameters
 %
 % Author: Domenico Profumo 
 %         Gerlando Gramaglia
 
+% -----------------------
+%     configuration 
+% -----------------------
 
-%dimensioni matrici
-m = 100;  
-n = 10; 
+% matrix dimensions
+n = 100;  %rows
+m = 10;   %column
 
-%
+% step of each column and rows for iteration
 step_col = 10;
 step_rows = 1000;
 
+%maximum values of rows/column 
 max_col = 50;
 max_rows = 10000;
 
 %magnitude of values
 magnitude = [1, 1e-14, 1e14];
 
-%hyperparameters
-num_iterations = 1000;
-%error = 1e-16;
-
-%gap tollerance
-tol = 1e-16;
-
 %rank 
 rank = [0.25, 0.5, 0.75];
+
+% -----------------------
+%     hyperparameters 
+% -----------------------
+num_iterations = 1000;
+
+%tollerance
+tol = 1e-15;

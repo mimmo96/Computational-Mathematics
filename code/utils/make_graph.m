@@ -1,15 +1,15 @@
-% FUNCTION FOR CREATING GRAPH
+% FUNCTION make_graph: create graph of 
 %
 % Author:   Domenico Profumo 
 %           Gerlando Gramaglia
 %
 % INPUT   
-%       gaps:
-%       errors_norm:
-%       name_fig:
-%       fig_title: 
+%       gaps: array containing how much the error reached at each iteration deviates from the optimal error relatively
+%       errors_norm: array containing errors of each iteration
+%       name_fig: name of figure to store (specific id)
+%       fig_title: figure title
 %
-% OUTPUT:
+% OUTPUT: --
 
 
 function make_graph(gaps, errors_norm, name_fig, fig_title )
