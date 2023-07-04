@@ -8,6 +8,8 @@ clear;
 
 %load configurations
 addpath utils;
+addpath utils/graph;
+addpath utils/stats;
 format long e;
 hyperparameters;
 create_file_for_log;

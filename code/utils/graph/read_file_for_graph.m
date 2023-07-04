@@ -1,6 +1,6 @@
 format long e;
 
-path = 'log_stats.txt';
+path = '../../results/log_stats.txt';
 
 M = dlmread(path);
 
@@ -11,7 +11,7 @@ matrix = M(1:150,1:end);
 % 1 = 50%
 % 2 = 25%
 
-rank = 2;
+rank = 0;
 
 % grafico del tempo rispetto al numero delle righe (ogni linea rappresenta
 % la colonna)
@@ -43,26 +43,10 @@ plot(xcolumn_3, ycolumn_3,'b--')
 plot(xcolumn_4, ycolumn_4,'c--')
 plot(xcolumn_5, ycolumn_5,'g--')
 legend('10 col','20 col','30 col','40 col','50 col')
-title('time respect to rows with rank=0.5*column')
+title('time respect to rows with rank=0.25*column')
 xlabel('rows');
 ylabel('time(s)');
 grid on;
 
 hold off;
 
-% Saving the figure with both subplots
-%print(fig, name_fig, '-dpng', '-r300');
-
-%matrix(31:60*i,2); 
-%matrix(31:60*i,11); 
-
-% 5 grafici per ogni colonna ed ogni grafico una curva per ogni k
-
-%nel plot mettere righe e tempo
-
-%id		rows	cols	rank	it	error*	AlOp_err	svd_error	|(AlOp_err-error*)/error*| |(svd_err-error*)/error*| 	timer_opt	timer_svd
-
-
-% mostra solo la prima colonna (num_rows)
-% mostra solo la 7 colonna (ERROR_SVD)
-%data(1:2,7)
