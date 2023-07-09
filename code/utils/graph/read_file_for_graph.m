@@ -1,6 +1,6 @@
 format long e;
 
-path = '../../results/log_stats.txt';
+path = '../results/log_stats.txt';
 
 M = dlmread(path);
 
