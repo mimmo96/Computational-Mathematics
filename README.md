@@ -65,21 +65,21 @@ for examples:
 ## Repository structure
 ```bash
 CM
-├── 📂code
-│   ├── 📄hyperparameters.m                 #file containing all hyperparameters used
-│   ├── 📄matricies_case1.m                 #file
-│   ├── 📄matricies_case2.m                 #file
-│   └── 📂 utils                            #folder
-│       ├── 📄alternating_optimization.m    #file 
-│       ├── 📄thin_qr.m                     #file
-│       ├── 📂 graph                        #folder
-│       │   ├── 📄interpolation.m           #file
-│       │   ├── 📄read_file_for_graph.m     #file
-│       │   └── 📄make_graph.m              #file 
-│       └── 📂 stats                        #folder
-│           ├── 📄calculate_stats.m         #file 
-│           └── 📄create_file_for_log.m     #file 
-└── 📄README.md
+├── code
+│   ├── hyperparameters.m                 #file containing all hyperparameters used
+│   ├── matricies_case1.m                 #file
+│   ├── matricies_case2.m                 #file
+│   └── utils                             #folder
+│       ├── alternating_optimization.m    #file 
+│       ├── thin_qr.m                     #file
+│       ├── graph                         #folder
+│       │   ├── interpolation.m           #file
+│       │   ├── read_file_for_graph.m     #file
+│       │   └── make_graph.m              #file 
+│       └── stats                         #folder
+│           ├── calculate_stats.m         #file 
+│           └── create_file_for_log.m     #file 
+└── README.md
 ```
 
 ## Authors
