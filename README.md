@@ -48,9 +48,9 @@ matricies_case2   #execute case2
 
 ### Results
 
-at the end of each execution inside the "code" folder there will be a folder called "results" containing a file called log_stats and the figures generated for each case analysed. In particular for this cases tol of 1e-11 was used
+At the end of each execution inside the "code" folder there will be a folder called "results" containing a file called log_stats and the figures generated for each case analysed.
 
-for examples:
+Examples of mixed case 1 and 2 with 1e-11 of tol:
 
 |  id | rows | cols | rank | it  | error* |  AlOp_err	|	svd_error	|  (AlOp_err-error*)/error*    | (svd_err-error*)/error*   |   timer_opt	| timer_svd |
 |-----|------|------|------|-----|--------|-------------|---------------|----------------------------|---------------------------|--------------|-------------|
